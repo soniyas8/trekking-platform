@@ -1,0 +1,93 @@
+{% extends 'treks/base.html' %}
+
+{% block title %}About Us - Star Adventure Asia Treks{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+        <h1 class="text-5xl font-bold text-sage-600 mb-4">About Star Adventure Asia</h1>
+        <p class="text-xl text-sage-500">Bringing the Himalayas closer to adventurers worldwide</p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-sage-100">
+        <h2 class="text-3xl font-bold text-sage-600 mb-4">Our Story</h2>
+        <div class="prose prose-lg text-sage-500 leading-relaxed space-y-4">
+            <p>
+                Star Adventure Asia was founded with a passion for sharing the breathtaking beauty 
+                of the Himalayan mountains with trekkers from around the world. Based in Nepal, 
+                our agency specializes in curating authentic mountain experiences that combine 
+                adventure with cultural immersion.
+            </p>
+            <p>
+                With years of experience in the Himalayan region, we understand what makes a 
+                trek truly memorable - from the stunning landscapes and challenging trails to 
+                the warm hospitality of mountain communities and the sense of achievement at 
+                reaching high-altitude destinations.
+            </p>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-sage-100">
+        <h2 class="text-3xl font-bold text-sage-600 mb-4">Why Choose Us</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start">
+                <svg class="w-6 h-6 text-sage-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                    <h3 class="font-semibold text-sage-600 mb-2">Expert Guides</h3>
+                    <p class="text-sage-500">Experienced local guides who know every trail intimately</p>
+                </div>
+            </div>
+            <div class="flex items-start">
+                <svg class="w-6 h-6 text-sage-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                    <h3 class="font-semibold text-sage-600 mb-2">Safety First</h3>
+                    <p class="text-sage-500">Comprehensive safety protocols and emergency support</p>
+                </div>
+            </div>
+            <div class="flex items-start">
+                <svg class="w-6 h-6 text-sage-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                    <h3 class="font-semibold text-sage-600 mb-2">Small Groups</h3>
+                    <p class="text-sage-500">Intimate group sizes for personalized experiences</p>
+                </div>
+            </div>
+            <div class="flex items-start">
+                <svg class="w-6 h-6 text-sage-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div>
+                    <h3 class="font-semibold text-sage-600 mb-2">Sustainable Tourism</h3>
+                    <p class="text-sage-500">Committed to responsible and eco-friendly trekking</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gradient-to-r from-sage-50 to-teal-50 rounded-2xl p-8 text-center border border-sage-100">
+        <h2 class="text-3xl font-bold text-sage-600 mb-4">Ready to Start Your Adventure?</h2>
+        <p class="text-sage-500 mb-6 max-w-2xl mx-auto">
+            Explore our trek packages and get in touch to plan your Himalayan journey.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'treks:trek_list' %}" 
+               class="bg-sage-500 text-white px-8 py-3 rounded-full hover:bg-sage-600 transition duration-200 font-medium">
+                View All Treks
+            </a>
+            <a href="{% url 'treks:contact' %}" 
+               class="bg-white text-sage-600 px-8 py-3 rounded-full hover:bg-sage-50 transition duration-200 font-medium border border-sage-200">
+                Contact Us
+            </a>
+        </div>
+    </div>
+
+    <div class="mt-8 text-center text-sm text-sage-400">
+        <p><em>Note: This is a portfolio demonstration project</em></p>
+    </div>
+</div>
+{% endblock %}

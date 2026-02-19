@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Star Adventure Asia Treks{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f6f7f6',
+                            100: '#e3e7e3',
+                            200: '#c7cfc7',
+                            300: '#a4b3a4',
+                            400: '#7d9380',
+                            500: '#5f7862',
+                            600: '#4a5f4d',
+                        },
+                        sand: {
+                            50: '#faf9f7',
+                            100: '#f5f3ef',
+                            200: '#e8e4dc',
+                            300: '#d4cdc1',
+                            400: '#bfb5a4',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-b from-white to-sage-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-sage-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="{% url 'treks:home' %}" class="text-2xl font-bold text-sage-600 tracking-wide">
+                        Star Adventure Asia Treks
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex space-x-8">
+                        <a href="{% url 'treks:home' %}" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">Home</a>
+                        <a href="{% url 'treks:trek_list' %}" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">All Treks</a>
+                        <a href="{% url 'treks:about' %}" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">About</a>
+                        <a href="{% url 'treks:contact' %}" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">Contact</a>
+                        <a href="/admin/" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">Admin</a>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-sage-100 mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-sage-500">© 2026 Star Adventure Asia Treks</p>
+                <p class="text-sm text-sage-400 mt-2">Portfolio Project - Demo Website</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

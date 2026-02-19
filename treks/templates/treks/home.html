@@ -1,0 +1,93 @@
+{% extends 'treks/base.html' %}
+
+{% block title %}Home - Star Adventure Asia Treks{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="bg-gradient-to-r from-sage-100 via-teal-50 to-sage-100">
+    <div class="max-w-7xl mx-auto px-4 py-28 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-6xl font-bold mb-6 text-sage-600 tracking-tight">Discover the Himalayas</h1>
+            <p class="text-xl mb-10 text-sage-500 max-w-2xl mx-auto leading-relaxed">
+                Embark on unforgettable trekking adventures through Nepal's stunning mountain landscapes
+            </p>
+            <a href="{% url 'treks:trek_list' %}" 
+               class="bg-sage-500 text-white px-10 py-4 rounded-full font-medium text-lg hover:bg-sage-600 transition duration-300 inline-block shadow-md hover:shadow-lg">
+                Explore Our Treks
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Treks Section -->
+<div class="max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold text-sage-600 mb-4">Featured Treks</h2>
+        <p class="text-xl text-sage-500 max-w-2xl mx-auto">Our most popular and highly recommended trekking experiences</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for trek in featured_treks %}
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-sage-100">
+            {% if trek.featured_image %}
+            <div class="h-56 relative overflow-hidden">
+                <img src="{{ trek.featured_image.url }}" alt="{{ trek.name }}" class="absolute inset-0 w-full h-full object-cover object-center">>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+        {% else %}
+            <div class="h-56 bg-gradient-to-br from-sage-200 via-teal-100 to-emerald-100 flex items-center justify-center relative">
+                <svg class="w-20 h-20 text-sage-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+            </div>
+        {% endif %}
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-sage-600 mb-3">{{ trek.name }}</h3>
+                <p class="text-sage-500 mb-6 leading-relaxed">{{ trek.short_description }}</p>
+                
+                <div class="space-y-3 mb-6">
+                    <div class="flex items-center text-sm text-sage-600">
+                        <svg class="w-5 h-5 mr-3 text-sage-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="font-medium">{{ trek.duration_days }} days</span>
+                    </div>
+                    <div class="flex items-center text-sm text-sage-600">
+                        <svg class="w-5 h-5 mr-3 text-sage-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <span class="font-medium">{{ trek.get_difficulty_display }}</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-sage-100">
+                    <span class="text-3xl font-bold text-sage-600">${{ trek.price }}</span>
+                    <a href="{% url 'treks:trek_detail' trek.slug %}" 
+                       class="bg-sage-500 text-white px-6 py-3 rounded-full hover:bg-sage-600 transition duration-200 font-medium shadow-sm">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-span-full text-center py-12">
+            <p class="text-xl text-sage-400">No featured treks available at the moment.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="bg-gradient-to-r from-rose-100 via-orange-50 to-amber-100">
+    <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold mb-4 text-sage-600">Ready for Your Next Adventure?</h2>
+        <p class="text-xl mb-8 text-sage-500 max-w-2xl mx-auto">
+            Browse all our trekking packages and start planning your journey to the Himalayas
+        </p>
+        <a href="{% url 'treks:trek_list' %}" 
+           class="bg-white text-sage-600 px-10 py-4 rounded-full font-medium text-lg hover:bg-sage-50 transition duration-200 inline-block shadow-md border border-sage-200">
+            View All Treks
+        </a>
+    </div>
+</div>
+{% endblock %}

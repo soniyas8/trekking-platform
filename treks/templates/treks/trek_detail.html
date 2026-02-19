@@ -1,0 +1,101 @@
+{% extends 'treks/base.html' %}
+
+{% block title %}{{ trek.name }} - Star Adventure Asia Treks{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+    <!-- Trek Header -->
+    <div class="mb-8">
+        <a href="{% url 'treks:trek_list' %}" class="text-sage-500 hover:text-sage-600 flex items-center mb-6 font-medium">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to All Treks
+        </a>
+        <h1 class="text-5xl font-bold text-sage-600 mb-4">{{ trek.name }}</h1>
+        <p class="text-xl text-sage-500 leading-relaxed">{{ trek.short_description }}</p>
+    </div>
+
+    <!-- Trek Image Placeholder -->
+    {% if trek.featured_image %}
+    <div class="mb-10 h-96 rounded-3xl overflow-hidden shadow-lg relative">
+        <img src="{{ trek.featured_image.url }}" alt="{{ trek.name }}" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+    </div>
+{% else %}
+    <div class="mb-10 h-96 bg-gradient-to-br from-sage-200 via-teal-100 to-emerald-100 rounded-3xl flex items-center justify-center shadow-lg">
+        <svg class="w-32 h-32 text-sage-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+        </svg>
+    </div>
+{% endif %}
+
+    <!-- Trek Details Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-sage-100 hover:shadow-md transition-shadow">
+            <div class="flex items-center mb-3">
+                <svg class="w-7 h-7 mr-3 text-sage-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="text-lg font-semibold text-sage-600">Duration</h3>
+            </div>
+            <p class="text-3xl font-bold text-sage-500">{{ trek.duration_days }} days</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-sage-100 hover:shadow-md transition-shadow">
+            <div class="flex items-center mb-3">
+                <svg class="w-7 h-7 mr-3 text-sage-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <h3 class="text-lg font-semibold text-sage-600">Difficulty</h3>
+            </div>
+            <p class="text-3xl font-bold text-sage-500">{{ trek.get_difficulty_display }}</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-sage-100 hover:shadow-md transition-shadow">
+            <div class="flex items-center mb-3">
+                <svg class="w-7 h-7 mr-3 text-sage-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                </svg>
+                <h3 class="text-lg font-semibold text-sage-600">Max Altitude</h3>
+            </div>
+            <p class="text-3xl font-bold text-sage-500">{{ trek.max_altitude }}m</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-sage-100 hover:shadow-md transition-shadow">
+            <div class="flex items-center mb-3">
+                <svg class="w-7 h-7 mr-3 text-sage-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                </svg>
+                <h3 class="text-lg font-semibold text-sage-600">Best Season</h3>
+            </div>
+            <p class="text-lg text-sage-500 font-medium">{{ trek.best_season }}</p>
+        </div>
+    </div>
+
+    <!-- Price Section -->
+    <div class="bg-gradient-to-r from-sage-50 to-teal-50 border-2 border-sage-200 rounded-2xl p-10 mb-10 text-center">
+        <p class="text-sage-500 mb-2 font-medium">Starting from</p>
+        <p class="text-6xl font-bold text-sage-600 mb-4">${{ trek.price }}</p>
+        <p class="text-sage-500 text-lg">per person</p>
+    </div>
+
+    <!-- Description Section -->
+    <div class="bg-white rounded-2xl shadow-sm p-10 mb-10 border border-sage-100">
+        <h2 class="text-4xl font-bold text-sage-600 mb-6">About This Trek</h2>
+        <div class="prose prose-lg max-w-none">
+            <p class="text-sage-500 leading-relaxed text-lg whitespace-pre-line">{{ trek.description }}</p>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="bg-gradient-to-r from-rose-100 via-orange-50 to-amber-100 rounded-2xl p-10 text-center border border-sage-100">
+        <h3 class="text-3xl font-bold mb-4 text-sage-600">Ready to Start Your Adventure?</h3>
+        <p class="mb-8 text-lg text-sage-500">Contact us to book this trek or learn more about the experience</p>
+        <a href="{% url 'treks:home' %}" 
+           class="inline-block bg-white text-sage-600 px-10 py-4 rounded-full font-medium text-lg hover:bg-sage-50 transition duration-200 shadow-sm border border-sage-200">
+            Back to Home
+        </a>
+    </div>
+</div>
+{% endblock %}

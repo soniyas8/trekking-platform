@@ -1,0 +1,95 @@
+{% extends 'treks/base.html' %}
+
+{% block title %}Contact Us - Star Adventure Asia Treks{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-5xl font-bold text-sage-600 mb-4">Get In Touch</h1>
+        <p class="text-xl text-sage-500 max-w-2xl mx-auto">
+            Have questions about our treks? Ready to start your adventure? Send us a message and we'll get back to you soon.
+        </p>
+    </div>
+
+    <!-- Success Message -->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="mb-8 bg-green-50 border-2 border-green-200 text-green-700 px-6 py-4 rounded-2xl text-center">
+            <p class="font-medium">{{ message }}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Contact Form -->
+    <div class="bg-white rounded-2xl shadow-lg p-8 border border-sage-100">
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            
+            <div>
+                <label for="{{ form.trek.id_for_label }}" class="block text-sm font-medium text-sage-600 mb-2">
+                    {{ form.trek.label }}
+                </label>
+                {{ form.trek }}
+                {% if form.trek.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.trek.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-sage-600 mb-2">
+                    {{ form.name.label }} <span class="text-red-500">*</span>
+                </label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.name.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-sage-600 mb-2">
+                    {{ form.email.label }} <span class="text-red-500">*</span>
+                </label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.email.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.phone.id_for_label }}" class="block text-sm font-medium text-sage-600 mb-2">
+                    {{ form.phone.label }}
+                </label>
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.phone.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.message.id_for_label }}" class="block text-sm font-medium text-sage-600 mb-2">
+                    {{ form.message.label }} <span class="text-red-500">*</span>
+                </label>
+                {{ form.message }}
+                {% if form.message.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.message.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div class="pt-4">
+                <button type="submit" 
+                        class="w-full bg-sage-500 text-white px-8 py-4 rounded-full hover:bg-sage-600 transition duration-200 font-medium text-lg shadow-md hover:shadow-lg">
+                    Send Message
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="mt-12 text-center">
+        <p class="text-sage-500 mb-2">Or reach us directly:</p>
+        <p class="text-sage-600 font-medium">info@staradventureasia.com</p>
+        <p class="text-sage-600 font-medium">+977 980-36-26-021</p>
+    </div>
+</div>
+{% endblock %}

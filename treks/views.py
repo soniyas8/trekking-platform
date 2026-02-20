@@ -1,22 +1,31 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.management import call_command
+from django.contrib.auth import get_user_model
 from .models import Trek, Inquiry
 from .forms import InquiryForm
 import os
 
-# Auto-run migrations on first startup
-_migrations_run = False
-if not _migrations_run:
+# Auto-run migrations and create superuser on first startup
+_setup_complete = False
+if not _setup_complete:
     try:
         print("=" * 50)
         print("RUNNING MIGRATIONS...")
         print("=" * 50)
         call_command('migrate', '--noinput')
-        _migrations_run = True
         print("MIGRATIONS COMPLETE!")
+        
+        # Create superuser if it doesn't exist
+        User = get_user_model()
+        if not User.objects.filter(username='admin').exists():
+            print("Creating superuser...")
+            User.objects.create_superuser('admin', 'admin@test.com', 'admin123')
+            print("Superuser created! Username: admin, Password: admin123")
+        
+        _setup_complete = True
     except Exception as e:
-        print(f"Migration error: {e}")
+        print(f"Setup error: {e}")
 
 
 def home(request):

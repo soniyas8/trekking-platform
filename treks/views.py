@@ -1,12 +1,26 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.core.management import call_command
 from .models import Trek, Inquiry
 from .forms import InquiryForm
+import os
 
+# Auto-run migrations on first startup
+_migrations_run = False
+if not _migrations_run:
+    try:
+        print("=" * 50)
+        print("RUNNING MIGRATIONS...")
+        print("=" * 50)
+        call_command('migrate', '--noinput')
+        _migrations_run = True
+        print("MIGRATIONS COMPLETE!")
+    except Exception as e:
+        print(f"Migration error: {e}")
 
 
 def home(request):
-    "Homepage showing featured treks"
+    """Homepage showing featured treks"""
     featured_treks = Trek.objects.filter(is_featured=True, is_active=True)
     context = {
         'featured_treks': featured_treks,
@@ -23,19 +37,10 @@ def trek_list(request):
 
 def trek_detail(request, slug):
     """Individual trek detail page"""
-    print(f"Looking for trek with slug: {slug}")
-    
     trek = get_object_or_404(Trek, slug=slug, is_active=True)
-    print(f"Found trek: {trek.name}")
-    print(f"Trek price: {trek.price}")
-    print(f"Trek duration: {trek.duration_days}")
-    
     context = {
         'trek': trek,
     }
-    
-    print(f"Context being passed: {context}")  # New debug line
-    
     return render(request, 'treks/trek_detail.html', context)
 
 def contact(request):

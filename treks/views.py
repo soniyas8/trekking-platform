@@ -19,9 +19,11 @@ if not _setup_complete:
         # Create superuser if it doesn't exist
         User = get_user_model()
         if not User.objects.filter(username='admin').exists():
-            print("Creating superuser...")
-            User.objects.create_superuser('admin', 'admin@test.com', 'admin123')
-            print("Superuser created! Username: admin, Password: admin123")
+          
+          admin_password = os.environ.get('ADMIN_PASSWORD', 'changeme')
+          print("Creating superuser...")
+          User.objects.create_superuser('admin', 'admin@test.com', admin_password)
+          print("Superuser created!")
         
         _setup_complete = True
     except Exception as e:

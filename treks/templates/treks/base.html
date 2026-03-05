@@ -34,27 +34,64 @@
 </head>
 <body class="bg-gradient-to-b from-white to-sage-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm border-b border-sage-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="{% url 'treks:home' %}" class="text-2xl font-bold text-sage-600 tracking-wide">
-                        Star Adventure Asia Treks
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="flex space-x-8">
-                        <a href="{% url 'treks:home' %}" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">Home</a>
-                        <a href="{% url 'treks:trek_list' %}" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">All Treks</a>
-                        <a href="{% url 'treks:about' %}" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">About</a>
-                        <a href="{% url 'treks:contact' %}" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">Contact</a>
-                        <a href="/admin/" class="text-sage-600 hover:text-sage-500 transition duration-200 font-medium">Admin</a>
+   
+<nav class="bg-white shadow-sm border-b border-sage-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo  -->
+            <div class="flex-shrink-0">
+                <a href="{% url 'treks:home' %}" class="flex items-center gap-3 group">
+                    <!-- Mountain Icon -->
+                    <div class="relative">
+                        <svg class="w-10 h-10 text-sage-500 group-hover:text-sage-600 transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14 2l-4 8-4-4-6 14h24L14 2zm0 4.5l5.9 11.5H8.1L14 6.5z" opacity="0.6"/>
+                            <path d="M14 2l10 18H4L14 2zm0 4.5L8.1 18h11.8L14 6.5z"/>
+                        </svg>
                     </div>
-        
-                </div>
+                    
+                    <!-- Brand Text  -->
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold text-sage-600 group-hover:text-sage-700 transition-colors leading-tight tracking-wide">
+                            Star Adventure Asia Treks
+                        </span>
+                        <span class="text-sm text-sage-500 font-light tracking-wider uppercase">
+                            Himalayan Treks
+                        </span>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="{% url 'treks:home' %}" 
+                   class="text-sage-600 hover:text-sage-700 font-semibold text-base transition-colors duration-200 {% if request.resolver_match.url_name == 'home' %}text-sage-700 border-b-2 border-sage-500{% endif %}">
+                    Home
+                </a>
+                <a href="{% url 'treks:trek_list' %}" 
+                   class="text-sage-600 hover:text-sage-700 font-semibold text-base transition-colors duration-200 {% if request.resolver_match.url_name == 'trek_list' %}text-sage-700 border-b-2 border-sage-500{% endif %}">
+                    All Treks
+                </a>
+                <a href="{% url 'treks:about' %}" 
+                   class="text-sage-600 hover:text-sage-700 font-semibold text-base transition-colors duration-200 {% if request.resolver_match.url_name == 'about' %}text-sage-700 border-b-2 border-sage-500{% endif %}">
+                    About
+                </a>
+                <a href="{% url 'treks:contact' %}" 
+                   class="px-6 py-2.5 bg-sage-500 text-white rounded-full hover:bg-sage-600 transition-all duration-300 shadow-md hover:shadow-lg font-semibold text-base">
+                    Contact
+                </a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button type="button" class="text-sage-600 hover:text-sage-700 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Main Content -->
     {% block content %}

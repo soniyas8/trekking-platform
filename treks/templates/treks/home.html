@@ -4,17 +4,106 @@
 
 {% block content %}
 <!-- Hero Section -->
-<div class="bg-gradient-to-r from-sage-100 via-teal-50 to-sage-100">
-    <div class="max-w-7xl mx-auto px-4 py-28 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <h1 class="text-6xl font-bold mb-6 text-sage-600 tracking-tight">Discover the Himalayas</h1>
+
+<div class="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+    
+    <!-- Animated Prayer Flags  -->
+    <div class="absolute top-0 left-0 right-0 h-full pointer-events-none opacity-80">
+        <svg class="w-full h-full" preserveAspectRatio="xMidYMin slice" viewBox="0 0 1400 400">
+            <!-- Curved Rope/String - U-Shape -->
+            <path d="M -50 30 Q 350 70, 700 80 T 1450 40" stroke="#4a5f4d" stroke-width="2" fill="none" opacity="0.9"/>
+            
+            <!-- Blue Flag -->
+            <g transform="translate(110, 30)">
+                <rect x="0" y="0" width="35" height="50" fill="#1e40af" rx="1.5" stroke="#1e3a8a" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; 3; 0; -3; 0" dur="2.5s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- White Flag  -->
+            <g transform="translate(235, 50)">
+                <rect x="0" y="0" width="35" height="50" fill="#ffffff" rx="1.5" stroke="#9ca3af" stroke-width="1.2">
+                    <animateTransform attributeName="transform" type="skewX" values="0; -3; 0; 3; 0" dur="2.8s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- Red Flag -->
+            <g transform="translate(355, 60)">
+                <rect x="0" y="0" width="35" height="50" fill="#dc2626" rx="1.5" stroke="#991b1b" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; 4; 0; -4; 0" dur="2.3s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- Green Flag  -->
+            <g transform="translate(475, 68)">
+                <rect x="0" y="0" width="35" height="50" fill="#16a34a" rx="1.5" stroke="#166534" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; -3; 0; 3; 0" dur="2.6s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- Yellow Flag  -->
+            <g transform="translate(595, 73)">
+                <rect x="0" y="0" width="35" height="50" fill="#eab308" rx="1.5" stroke="#ca8a04" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; 3; 0; -3; 0" dur="2.4s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- Blue Flag -->
+            <g transform="translate(715, 80)">
+                <rect x="0" y="0" width="35" height="50" fill="#1e40af" rx="1.5" stroke="#1e3a8a" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; -4; 0; 4; 0" dur="2.7s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- White Flag -->
+            <g transform="translate(835, 73)">
+                <rect x="0" y="0" width="35" height="50" fill="#ffffff" rx="1.5" stroke="#9ca3af" stroke-width="1.2">
+                    <animateTransform attributeName="transform" type="skewX" values="0; 3; 0; -3; 0" dur="2.5s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- Red Flag (smaller) -->
+            <g transform="translate(955, 68)">
+                <rect x="0" y="0" width="35" height="50" fill="#dc2626" rx="1.5" stroke="#991b1b" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; -3; 0; 3; 0" dur="2.8s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- Green Flag (smaller) -->
+            <g transform="translate(1075, 60)">
+                <rect x="0" y="0" width="35" height="50" fill="#16a34a" rx="1.5" stroke="#166534" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; 4; 0; -4; 0" dur="2.3s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- Yellow Flag (smaller) -->
+            <g transform="translate(1195, 50)">
+                <rect x="0" y="0" width="35" height="50" fill="#eab308" rx="1.5" stroke="#ca8a04" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; -3; 0; 3; 0" dur="2.6s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+            
+            <!-- Blue Flag (end) (smaller) -->
+            <g transform="translate(1310, 40)">
+                <rect x="0" y="0" width="35" height="50" fill="#1e40af" rx="1.5" stroke="#1e3a8a" stroke-width="0.8">
+                    <animateTransform attributeName="transform" type="skewX" values="0; 3; 0; -3; 0" dur="2.4s" repeatCount="indefinite"/>
+                </rect>
+            </g>
+        </svg>
+    </div>
+    
+    <!-- Content -->
+    <div class="max-w-7xl mx-auto px-4 pt-56 pb-28 sm:px-6 lg:px-8">
+        <div class="text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-sage-600 tracking-tight">Discover the Himalayas</h1>
             <p class="text-xl mb-10 text-sage-500 max-w-2xl mx-auto leading-relaxed">
                 Embark on unforgettable trekking adventures through Nepal's stunning mountain landscapes
             </p>
+            
             <a href="{% url 'treks:trek_list' %}" 
-               class="bg-sage-500 text-white px-10 py-4 rounded-full font-medium text-lg hover:bg-sage-600 transition duration-300 inline-block shadow-md hover:shadow-lg">
-                Explore Our Treks
-            </a>
+   class="inline-block px-10 py-4 bg-sage-600 text-white rounded-full font-medium text-base hover:bg-sage-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+    Explore Treks
+</a>
         </div>
     </div>
 </div>

@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage', 
+    'cloudinary',   
     'treks',
 ]
 
@@ -126,7 +128,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media files (uploads)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # WhiteNoise configuration
 STORAGES = {
@@ -148,3 +150,18 @@ if 'DATABASE_URL' in os.environ:
         conn_max_age=600,
         conn_health_checks=True,
     )
+
+
+# Cloudinary Configuration
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dhnuqapcs',
+    'API_KEY': '643589541589721',
+    'API_SECRET': '6mFQwMFxEOGLUhLXLA9CX2VzuEE',
+}
+
+# Use Cloudinary for media files
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

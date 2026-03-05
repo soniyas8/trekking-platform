@@ -158,9 +158,9 @@ import cloudinary.uploader
 import cloudinary.api
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dhnuqapcs',
-    'API_KEY': '643589541589721',
-    'API_SECRET': '6mFQwMFxEOGLUhLXLA9CX2VzuEE',
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dhnuqapcs'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '643589541589721'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '6mFQwMFxEOGLUhLXLA9CX2VzuEE'),
 }
 
 # Use Cloudinary for media files

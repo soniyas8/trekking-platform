@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-78z*h9@v19cob49#t5vs@u(umn-j-p-+6-^*8#dw#*j)hwx*%d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True  # Temporary - to see errors
 
 ALLOWED_HOSTS = ['web-production-c4d89.up.railway.app', 'localhost', '127.0.0.1', '*']
 CSRF_TRUSTED_ORIGINS = [
@@ -163,4 +163,7 @@ CLOUDINARY_STORAGE = {
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '643589541589721'),
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '6mFQwMFxEOGLUhLXLA9CX2VzuEE'),
 }
+
+# Gemini API Key (for local development)
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyDqy-vGx7Isk1U2gbdWszHAssJkaAnRraY')
 

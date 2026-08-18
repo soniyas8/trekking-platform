@@ -20,6 +20,12 @@ class Trek(models.Model):
     difficulty = models.CharField(max_length=20, choices=DIFFICULTY_CHOICES)
     max_altitude = models.IntegerField(help_text="Maximum altitude in meters")
     best_season = models.CharField(max_length=100, help_text="e.g., March-May, September-November")
+
+    # Location (added for route optimization)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True,
+                                    help_text="Starting point latitude")
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True,
+                                     help_text="Starting point longitude")
     
     # Pricing
     price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Price in USD")

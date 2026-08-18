@@ -9,4 +9,6 @@ urlpatterns = [
     path('trek/<slug:slug>/', views.trek_detail, name='trek_detail'),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
+    path('optimize-trip/', views.optimize_trip, name='optimize_trip'),
+   
 ]

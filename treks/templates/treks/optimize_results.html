@@ -1,0 +1,48 @@
+{% extends 'treks/base.html' %}
+
+{% block title %}Your Optimized Itinerary - Star Adventure Asia Treks{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h1 class="text-5xl font-bold text-sage-600 mb-4">Your Optimized Itinerary</h1>
+
+<div class="inline-block bg-white rounded-2xl shadow-sm border border-sage-100 p-6 mt-4">
+    <div class="grid grid-cols-3 gap-8 text-center">
+        <div>
+            <p class="text-sm text-sage-400 uppercase tracking-wide">Naive Order</p>
+            <p class="text-2xl font-bold text-sage-400">{{ naive_distance }} km</p>
+        </div>
+        <div>
+            <p class="text-sm text-sage-400 uppercase tracking-wide">Optimized</p>
+            <p class="text-2xl font-bold text-sage-600">{{ total_distance }} km</p>
+        </div>
+        <div>
+            <p class="text-sm text-sage-400 uppercase tracking-wide">Saved</p>
+            <p class="text-2xl font-bold text-emerald-600">{{ savings }} km ({{ savings_pct }}%)</p>
+        </div>
+    </div>
+</div>
+
+<p class="text-sm text-sage-400 mt-4">Calculated using great-circle distance and a 2-opt route optimization algorithm.</p>
+</div>
+
+<ol class="space-y-4">
+    {% for trek in ordered_treks %}
+    <li class="flex items-center gap-6 bg-white rounded-2xl shadow-sm p-6 border border-sage-100">
+        <span class="text-4xl font-bold text-sage-300">{{ forloop.counter }}</span>
+        <div>
+            <h2 class="text-2xl font-bold text-sage-600">{{ trek.name }}</h2>
+            <p class="text-sage-500">{{ trek.duration_days }} days &middot; {{ trek.get_difficulty_display }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ol>
+
+<div class="text-center mt-12">
+    <a href="{% url 'treks:trek_list' %}" class="inline-block bg-sage-500 text-white px-8 py-4 rounded-full hover:bg-sage-600 transition duration-200 font-medium shadow-sm">
+        ← Back to All Treks
+    </a>
+</div>
+</div>
+{% endblock %}

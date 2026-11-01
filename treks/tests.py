@@ -144,3 +144,4 @@ class OptimizeRouteWithRealTrekModelTests(TestCase):
 
         self.assertEqual(len(ordered), 2)
         self.assertGreater(total_distance, 0)
+        
